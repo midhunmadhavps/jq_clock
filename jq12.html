@@ -30,7 +30,7 @@ body{
 }
 
 //JS PART
-
+$(document).ready(function(){
 showtime();
 function showtime(){
     var date = new Date();
@@ -63,6 +63,6 @@ function showtime(){
     setTimeout(showtime,1000);  //1000 ms delay to show the change while in the page loading time.
     
 }
-
+});
 
 
