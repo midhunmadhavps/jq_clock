@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JQ Clock</title>
+		<meta charset="utf-8">
+    <link rel="stylesheet" href="jQ12.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="jQ12.js"></script>
+  </head>  
+  <body>
+    <div class="clock" id="clock">HH:MM:SS:AM/PM</div>
+  </body>
+</html>
+
+
+
+//CSS PART
+
+body{
+    text-align: center;
+    background-color:#608c8f;
+    padding:20%;
+}
+.clock{
+    background-color:#2e4c4e;
+    padding:10%;
+    box-shadow: -1px 0px 30px -2px rgb(126,200,204);
+    font-size:40px;
+    color: #fff;
+}
+
+//JS PART
+
+showtime();
+function showtime(){
+    var date = new Date();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var session = "AM";
+
+    if (h >= 12){
+        session = "PM"
+    }
+    if( h == 0){
+        h=12;
+    }
+    if(h>12){
+        h = h - 12;
+    }
+    if(h < 10){
+        h = "0" + h;
+    }
+    if(m < 10){
+        m = "0" + m;
+    }
+    if(s < 10){
+        s = "0" + s;
+    }
+
+    var time = h + ":" + m + ":" + s + " " + session;
+    $("#clock").html(time);
+    setTimeout(showtime,1000);  //1000 ms delay to show the change while in the page loading time.
+    
+}
+
+
+
